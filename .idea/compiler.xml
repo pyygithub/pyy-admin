@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="pyy-common-swagger" />
+        <module name="pyy-common-core" />
+        <module name="pyy-system-cms-api" />
+        <module name="pyy-system-cms-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pyy-admin" target="1.8" />
+      <module name="pyy-common" target="1.8" />
+      <module name="pyy-common-core" target="1.8" />
+      <module name="pyy-common-swagger" target="1.8" />
+      <module name="pyy-projects" target="1.8" />
+      <module name="pyy-system-cms" target="1.8" />
+      <module name="pyy-system-cms-api" target="1.8" />
+      <module name="pyy-system-cms-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/pyy-admin.iml" filepath="$PROJECT_DIR$/.idea/pyy-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-common/pyy-common.iml" filepath="$PROJECT_DIR$/pyy-common/pyy-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-common/pyy-common-core/pyy-common-core.iml" filepath="$PROJECT_DIR$/pyy-common/pyy-common-core/pyy-common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-common/pyy-common-swagger/pyy-common-swagger.iml" filepath="$PROJECT_DIR$/pyy-common/pyy-common-swagger/pyy-common-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-projects/pyy-projects.iml" filepath="$PROJECT_DIR$/pyy-projects/pyy-projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms.iml" filepath="$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms-api/pyy-system-cms-api.iml" filepath="$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms-api/pyy-system-cms-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms-server/pyy-system-cms-server.iml" filepath="$PROJECT_DIR$/pyy-projects/pyy-system-cms/pyy-system-cms-server/pyy-system-cms-server.iml" />
+    </modules>
+  </component>
+</project>

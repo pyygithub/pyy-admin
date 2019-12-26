@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="73bbf610-6cf6-40db-a746-3f826e1155c2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/Java/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="C:\Java\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+  </component>
+  <component name="ProjectId" id="1VVgLKK9J4Da9fxGm6QgqJeRZLo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pyy-common/pyy-common-core/src/main/java/com/thtf/common/core/response" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.thtf.common.swagger.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\pyy-admin\pyy-common\pyy-common-core\src\main\java\com\thtf\common\core\response" />
+      <recent name="C:\Users\Administrator\Desktop\pyy-admin\pyy-common\pyy-common-core\src\main\java\com\thtf\common\core" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73bbf610-6cf6-40db-a746-3f826e1155c2" name="Default Changelist" comment="" />
+      <created>1577343618750</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577343618750</updated>
+      <workItem from="1577343619929" duration="8027000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1158" y="385" key="#com.intellij.ide.util.MemberChooser" timestamp="1577348789153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1158" y="385" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1577348789153" />
+    <state x="586" y="280" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1577346824669">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="280" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577346824669" />
+    <state x="278" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1577348505415">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="278" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577348505415" />
+    <state x="558" y="339" key="FileChooserDialogImpl" timestamp="1577350473407">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="558" y="339" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577350473407" />
+    <state x="513" y="333" key="Maven.ArtifactSearchDialog" timestamp="1577353243798">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="513" y="333" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577353243798" />
+    <state x="279" y="226" key="SettingsEditor" timestamp="1577350485796">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="279" y="226" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1577350485796" />
+    <state x="785" y="417" width="647" height="524" key="find.popup" timestamp="1577348102174">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="785" y="417" width="647" height="524" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577348102174" />
+    <state x="669" y="285" key="new project wizard" timestamp="1577350902077">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="285" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1577350902077" />
+  </component>
+</project>
