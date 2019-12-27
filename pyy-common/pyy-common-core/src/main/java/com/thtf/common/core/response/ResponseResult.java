@@ -52,5 +52,7 @@ public class ResponseResult<T> {
     public static ResponseResult FAIL(){
         return new ResponseResult(CommonCode.FAIL);
     }
-
+    public static ResponseResult SERVER_ERROR(){
+        return new ResponseResult(CommonCode.SERVER_ERROR);
+    }
 }

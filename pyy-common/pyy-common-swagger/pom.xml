@@ -13,6 +13,10 @@
 
     <description>pyy-common-swagger API文档</description>
 
+    <properties>
+        <swagger.version>2.7.0</swagger.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.springfox</groupId>
