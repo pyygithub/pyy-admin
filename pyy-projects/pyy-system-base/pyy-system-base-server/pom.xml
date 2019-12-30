@@ -52,6 +52,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- p6spy -->
         <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>

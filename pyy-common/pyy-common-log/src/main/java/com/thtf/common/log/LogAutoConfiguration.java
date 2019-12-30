@@ -22,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @Configuration
 @ConditionalOnWebApplication
-@EnableFeignClients({"com.thtf.base.api.feign"})
+@EnableFeignClients({"com.thtf.common.log.feign"})
 public class LogAutoConfiguration {
     @Bean
     public SysLogListener sysLogListener() {

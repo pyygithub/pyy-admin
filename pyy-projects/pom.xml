@@ -16,6 +16,7 @@
     <modules>
         <module>pyy-system-cms</module>
         <module>pyy-system-base</module>
+        <module>pyy-system-generate</module>
     </modules>
 
 
