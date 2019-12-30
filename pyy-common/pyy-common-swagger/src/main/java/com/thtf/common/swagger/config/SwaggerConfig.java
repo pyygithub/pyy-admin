@@ -44,10 +44,10 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Prex API")
-                .description("auth")
+                .title("在线 API")
+                .description("")
                 .termsOfServiceUrl("")
-                .contact(new Contact("Prex演示站点", "http://springcloud.cn", ""))
+                .contact(new Contact("pyy", "https://www.jianshu.com/u/af08f637aff8", ""))
                 .version("2.0")
                 .build();
     }

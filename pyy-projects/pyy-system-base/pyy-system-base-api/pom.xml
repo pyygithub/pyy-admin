@@ -15,6 +15,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <mybatis-plus.version>3.2.0</mybatis-plus.version>
         <pyy.version>1.0.0</pyy.version>
     </properties>
 
@@ -25,27 +26,20 @@
             <artifactId>pyy-common-core</artifactId>
             <version>${pyy.version}</version>
         </dependency>
-        <!-- pyy-common-data -->
-        <dependency>
-            <groupId>com.thtf</groupId>
-            <artifactId>pyy-common-data</artifactId>
-            <version>${pyy.version}</version>
-        </dependency>
-        <!-- pyy-common-auth -->
-        <dependency>
-            <groupId>com.thtf</groupId>
-            <artifactId>pyy-common-auth</artifactId>
-            <version>${pyy.version}</version>
-        </dependency>
-        <!-- pyy-common-swagger -->
         <dependency>
             <groupId>com.thtf</groupId>
             <artifactId>pyy-common-swagger</artifactId>
             <version>${pyy.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
     </dependencies>
 </project>

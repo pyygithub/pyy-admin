@@ -1,6 +1,6 @@
 package com.thtf.common.log.listener;
 
-import com.thtf.base.api.feign.SysLogControllerApi;
+import com.thtf.base.api.SysLogControllerApi;
 import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
 import com.thtf.common.log.event.SysLogEvent;
 import lombok.extern.slf4j.Slf4j;

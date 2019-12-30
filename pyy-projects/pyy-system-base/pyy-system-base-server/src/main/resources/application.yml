@@ -8,7 +8,6 @@ spring:
       discovery:
         server-addr: 10.10.50.189:8848
 
-
   #日期格式化配置
   jackson:
     date-format: yyyy-MM-dd hh:mm:ss #如果使用字符串表示，用这行设置格式

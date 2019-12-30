@@ -1,6 +1,6 @@
 package com.thtf.base.server.controller;
 
-import com.thtf.base.api.feign.SysLogControllerApi;
+import com.thtf.base.api.SysLogControllerApi;
 import com.thtf.base.api.vo.SysLogQueryConditionVO;
 import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
 import com.thtf.base.api.vo.SysLogVO;
