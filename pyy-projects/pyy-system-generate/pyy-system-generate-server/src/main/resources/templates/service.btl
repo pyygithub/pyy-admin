@@ -1,6 +1,9 @@
 package ${table.servicePackageName};
 
-import ${table.modelPackageName}.${table.className};
+import ${table.voPackageName}.*;
+import com.thtf.common.core.response.ResponseResult;
+
+import java.util.List;
 
 /**
  * ---------------------------
@@ -17,33 +20,33 @@ public interface ${table.className}Service {
      * ${table.description}保存
      * @param ${table.objectName}SaveOrUpdateVO
      */
-	public void save(${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO);
+    ${table.className}VO save(${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO);
 
 	/**
      * ${table.description}修改
      * @param id
      * @param ${table.objectName}SaveOrUpdateVO
      */
-    public void update(${table.primaryKey.javaType} id, ${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO);
+    ${table.className}VO update(${table.primaryKey.javaType} id, ${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO);
 
     /**
      * ${table.description}删除
      * @param id
      */
-	public void delete(${table.primaryKey.javaType} id);
+	void delete(${table.primaryKey.javaType} id);
 
     /**
      * 根据${table.description}ID查询
      * @param id
      */
-	public ${table.className}VO findById(${table.primaryKey.javaType} id);
+	${table.className}VO findById(${table.primaryKey.javaType} id);
 
     /**
      * ${table.description}模糊查询
      * @param queryConditionVO
      * @return
      */
-    public List<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO);
+    List<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO);
 
     /**
      * ${table.description}分页模糊查询
@@ -52,5 +55,5 @@ public interface ${table.className}Service {
      * @param size
      * @return
      */
-    public QueryResult<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size);
+    QueryResult<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size);
 }

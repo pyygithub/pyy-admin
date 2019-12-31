@@ -1,16 +1,18 @@
-package ${table.modelPackageName};
+package com.thtf.base.api.model;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * ---------------------------
  * 公共model字段
  * ---------------------------
- * 作者：  ${table.author}
- * 时间：  ${strutil.formatDate(date(),'yyyy-MM-dd HH:mm:ss')}
+ * 作者：  pyy
+ * 时间：  2019-12-31 16:10:54
  * 版本：  v1.0
  * ---------------------------
  */
@@ -28,7 +30,7 @@ public class CommonModel {
 
     /** 创建时间 */
     @TableField(fill = FieldFill.INSERT)
-    private java.sql.Timestamp createTime;
+    private Date createTime;
 
     /** 修改人编码 */
     @TableField(fill = FieldFill.UPDATE)
@@ -40,8 +42,8 @@ public class CommonModel {
 
     /** 修改时间 */
     @TableField(fill = FieldFill.UPDATE)
-    private java.sql.Timestamp updateTime;
+    private Date updateTime;
 
     /** 删除标记 */
-    private Integer deleteFlag = 0;
+    private Integer deletedFlag = 0;
 }

@@ -4,13 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.thtf.base.api.model.SysLog;
-import com.thtf.base.api.vo.SysLogQueryConditionVO;
-import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
-import com.thtf.base.api.vo.SysLogVO;
+import com.thtf.base.api.vo.LogQueryConditionVO;
+import com.thtf.base.api.vo.LogSaveOrUpdateVO;
+import com.thtf.base.api.vo.LogVO;
 import com.thtf.base.server.enums.BaseServerCode;
 import com.thtf.base.server.mapper.SysLogMapper;
 import com.thtf.base.server.service.SysLogService;
-import com.thtf.common.core.exception.CustomException;
 import com.thtf.common.core.exception.ExceptionCast;
 import com.thtf.common.core.response.CommonCode;
 import com.thtf.common.core.response.Pager;
@@ -40,9 +39,9 @@ public class SysLogServiceImpl implements SysLogService {
     private SysLogMapper sysLogMapper;
 
     @Override
-    public Pager<SysLogVO> findList(int pages, int size, SysLogQueryConditionVO queryConditionVO) {
+    public Pager<LogVO> findList(int pages, int size, LogQueryConditionVO queryConditionVO) {
         if (queryConditionVO == null) {
-            queryConditionVO = new SysLogQueryConditionVO();
+            queryConditionVO = new LogQueryConditionVO();
         }
         // 查询条件
         LambdaQueryWrapper<SysLog> queryWrapper = new LambdaQueryWrapper<>();
@@ -57,33 +56,33 @@ public class SysLogServiceImpl implements SysLogService {
         long total = page.getTotal();
         List<SysLog> records = page.getRecords();
         // 转换VO对象
-        List<SysLogVO> sysLogVOList = new ArrayList<>(pages);
+        List<LogVO> logVOList = new ArrayList<>(pages);
         records.forEach(record -> {
-            SysLogVO sysLogVO = new SysLogVO();
-            BeanUtils.copyProperties(record, sysLogVO);
-            sysLogVOList.add(sysLogVO);
+            LogVO logVO = new LogVO();
+            BeanUtils.copyProperties(record, logVO);
+            logVOList.add(logVO);
         });
         // 返回结果
-        return new Pager(total, sysLogVOList);
+        return new Pager(total, logVOList);
     }
 
     @Override
-    public SysLogVO add(SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO) {
-        if (sysLogSaveOrUpdateVO == null) {
+    public LogVO add(LogSaveOrUpdateVO logSaveOrUpdateVO) {
+        if (logSaveOrUpdateVO == null) {
             ExceptionCast.cast(CommonCode.INVALID_PARAM);
         }
         // VO转换为Model
         SysLog sysLog = new SysLog();
-        BeanUtils.copyProperties(sysLogSaveOrUpdateVO, sysLog);
+        BeanUtils.copyProperties(logSaveOrUpdateVO, sysLog);
         sysLog.setId(null);
         int row = sysLogMapper.insert(sysLog);
         if (row != 1) {
             ExceptionCast.cast(BaseServerCode.SAVE_ERROR);
         }
         // 返回保存后对象
-        SysLogVO sysLogVO = new SysLogVO();
-        BeanUtils.copyProperties(sysLog, sysLogVO);
-        return sysLogVO;
+        LogVO logVO = new LogVO();
+        BeanUtils.copyProperties(sysLog, logVO);
+        return logVO;
     }
 
     @Override

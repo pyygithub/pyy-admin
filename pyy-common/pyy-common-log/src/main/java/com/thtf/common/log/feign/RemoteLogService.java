@@ -1,9 +1,8 @@
 package com.thtf.common.log.feign;
 
-import com.thtf.base.api.SysLogControllerApi;
+import com.thtf.base.api.LogControllerApi;
 import com.thtf.common.log.feign.factory.RemoteLogFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
@@ -16,6 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * ---------------------------
  */
 @FeignClient(contextId = "remoteLogService", value = "pyy-system-base-server", fallbackFactory = RemoteLogFallbackFactory.class)
-public interface RemoteLogService extends SysLogControllerApi {
+public interface RemoteLogService extends LogControllerApi {
 
 }

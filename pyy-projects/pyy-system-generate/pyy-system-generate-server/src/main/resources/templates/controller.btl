@@ -36,54 +36,87 @@ public class ${table.className}Controller {
 	@Autowired
 	private ${table.className}Service ${table.objectName}Service;
 
+    /**
+     * 保存${table.description}
+     * @param record
+     * @return
+     */
     @ApiOperation(value = "保存${table.description}", notes = "创建新${table.description}")
-    @ApiImplicitParam(name = "record", value = "${table.description}对象", required = true, dataType = "${table.className}", paramType = "body")
+    @ApiImplicitParam(name = "record", value = "${table.description}对象", required = true, dataType = "${table.className}SaveOrUpdateVO", paramType = "body")
     @PostMapping("/${table.objectName}")
-    public Result<${table.className}VO> save(@Valid @RequestBody ${table.className}SaveOrUpdateVO record) {
-        return Result.SUCCESS(${table.objectName}Service.save(record));
+    public ResponseResult<${table.className}VO> save(@Valid @RequestBody ${table.className}SaveOrUpdateVO record) {
+        return ResponseResult.SUCCESS(${table.objectName}Service.save(record));
     }
 
+    /**
+     * 修改${table.description}
+     * @param id
+     * @param record
+     * @return
+     */
     @ApiOperation(value = "修改${table.description}", notes = "根据ID修改${table.description}")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path"),
             @ApiImplicitParam(name = "record", value = "${table.description}对象", required = true, dataType = "${table.className}SaveOrUpdateVO", paramType = "body")
     })
     @PutMapping("/${table.objectName}/{id}")
-    public Result<${table.className}VO> update(@Valid @PathVariable(value = "id") String id, @RequestBody ${table.className}SaveOrUpdateVO record) {
-        return Result.SUCCESS(${table.objectName}Service.update(id, record));
+    public ResponseResult<${table.className}VO> update(@Valid @PathVariable(value = "id") String id, @RequestBody ${table.className}SaveOrUpdateVO record) {
+        return ResponseResult.SUCCESS(${table.objectName}Service.update(id, record));
     }
 
+    /**
+     * 删除${table.description}
+     * @param id
+     * @return
+     */
 	@ApiOperation(value = "删除${table.description}", notes = "根据ID${table.description}")
     @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path")
     @DeleteMapping("/${table.objectName}/{id}")
-    public Result delete(@Valid @PathVariable(value = "id") String id) {
+    public ResponseResult delete(@Valid @PathVariable(value = "id") String id) {
         ${table.objectName}Service.delete(id);
-        return Result.SUCCESS();
+        return ResponseResult.SUCCESS();
     }
 
+    /**
+     * 单个${table.description}查询
+     * @param id
+     * @return
+     */
     @ApiOperation(value = "${table.description}查询", notes = "根据ID${table.description}查询")
     @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path")
-    @GetMapping("/${table.objectName}")
-    public Result<${table.className}VO> findById(@Valid @PathVariable(value = "id") String id) {
-        return Result.SUCCESS(${table.objectName}Service.findById(id));
+    @GetMapping("/${table.objectName}/{id}")
+    public ResponseResult<${table.className}VO> findById(@Valid @PathVariable("id") String id) {
+        return ResponseResult.SUCCESS(${table.objectName}Service.findById(id));
     }
 
+    /**
+     * ${table.description}模糊查询
+     * @param queryConditionVO
+     * @return
+     */
     @ApiOperation(value = "${table.description}模糊查询", notes = "${table.description}不带分页模糊查询")
     @GetMapping("/${table.objectName}s")
-    public Result<List<${table.className}VO>> getList(${table.className}QueryConditionVO queryConditionVO) {
-        return Result.SUCCESS(${table.objectName}Service.findList(queryConditionVO));
+    public ResponseResult<List<${table.className}VO>> getList(${table.className}QueryConditionVO queryConditionVO) {
+        return ResponseResult.SUCCESS(${table.objectName}Service.findList(queryConditionVO));
     }
 
+    /**
+     * ${table.description}分页查询
+     * @param queryConditionVO
+     * @param page
+     * @param size
+     * @return
+     */
     @ApiOperation(value = "${table.description}分页查询", notes = "${table.description}分页模糊查询")
     @ApiImplicitParams({
              @ApiImplicitParam(name = "page", value = "当前页码", required = true, dataType = "int", paramType = "query"),
              @ApiImplicitParam(name = "size", value = "分页尺寸", required = true, dataType = "int", paramType = "query")
     })
     @GetMapping("/${table.objectName}s/page")
-    public Result<QueryResult<${table.className}VO>> getPageList(${table.className}QueryConditionVO queryConditionVO,
+    public ResponseResult<Pager<${table.className}VO>> getPageList(${table.className}QueryConditionVO queryConditionVO,
                                      @RequestParam(value = "page", defaultValue = "1") Integer page,
                                      @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        return Result.SUCCESS(${table.objectName}Service.findList(queryConditionVO, page, size));
+        return ResponseResult.SUCCESS(${table.objectName}Service.findList(queryConditionVO, page, size));
     }
 	
 }

@@ -15,7 +15,8 @@ public enum BaseServerCode implements ResponseCode {
     SAVE_ERROR(20001,"保存失败！"),
     UPDATE_ERROR(20002,"修改失败！"),
     DELETE_ERROR(20003,"删除失败！"),
-    SELECT_ERROR(20004,"查询失败！");
+    SELECT_ERROR(20004,"查询失败！"),
+    RESULT_DATA_NONE(20005,"数据不存在！");
 
     //操作代码
     private int code;

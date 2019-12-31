@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ApiModel(value = "SysLogSaveOrUpdateVO", description = "系统日志保存和修改VO类")
-public class SysLogSaveOrUpdateVO implements Serializable {
+public class LogSaveOrUpdateVO implements Serializable {
 
     private static final long serialVersionUID = -6645663082545957651L;
 

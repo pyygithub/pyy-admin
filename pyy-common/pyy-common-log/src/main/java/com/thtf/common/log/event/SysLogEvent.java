@@ -1,6 +1,6 @@
 package com.thtf.common.log.event;
 
-import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.LogSaveOrUpdateVO;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationEvent;
  */
 public class SysLogEvent extends ApplicationEvent {
 
-    public SysLogEvent(SysLogSaveOrUpdateVO sysLog) {
+    public SysLogEvent(LogSaveOrUpdateVO sysLog) {
         super(sysLog);
     }
 }

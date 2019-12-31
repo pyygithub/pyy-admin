@@ -45,7 +45,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
      * @param ${table.objectName}SaveOrUpdateVO
      */
 	@Override
-	public void save(${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO) {
+	public ${table.className}VO save(${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO) {
         // 初始化Model对象
         ${table.className} ${table.objectName} = new ${table.className}();
         // 属性赋值
@@ -59,7 +59,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 转换为VO对象
         ${table.objectName}VO ${table.objectName}VO = new ${table.objectName}VO();
         BeanUtils.copyProperties(${table.objectName}, ${table.objectName}VO);
-        log.info("### ${table.description}保存成功 ###");
+        log.info("### ${table.description}保存完毕 ###");
         // 返回保存后结果
         return ${table.objectName}VO;
 	}
@@ -84,7 +84,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         if (row != 1) {
            ExceptionCast.cast(ResultCode.DELETE_ERROR, "${table.description}");
         }
-        log.info("### ${table.description}删除成功 ###");
+        log.info("### ${table.description}删除完毕 ###");
     }
 
 	/**
@@ -93,10 +93,10 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
      * @param ${table.objectName}SaveOrUpdateVO
      */
     @Override
-    public void update(${table.primaryKey.javaType} id, ${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO) {
+    public ${table.className}VO update(${table.primaryKey.javaType} id, ${table.className}SaveOrUpdateVO ${table.objectName}SaveOrUpdateVO) {
         // 参数校验
         if (StringUtils.isBlank(id) || ${table.objectName}SaveOrUpdateVO == null) {
-           ExceptionCast.cast(ResultCode.PARAM_INVALID);
+           ExceptionCast.cast(CommonCode.INVALID_PARAM);
         }
         // 根据ID查询${table.description}
         ${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
@@ -106,7 +106,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
 
         // 属性赋值
         BeanUtils.copyProperties(${table.objectName}SaveOrUpdateVO, ${table.objectName});
-        user.setId(id);
+        ${table.objectName}.setId(id);
         // 执行修改
         int row = ${table.objectName}Mapper.updateById(${table.objectName});
         if (row != 1) {
@@ -115,7 +115,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 转换为VO对象
         ${table.objectName}VO ${table.objectName}VO = new ${table.objectName}VO();
         BeanUtils.copyProperties(${table.objectName}, ${table.objectName}VO);
-         log.info("### ${table.description}修改成功 ###");
+         log.info("### ${table.description}修改完毕 ###");
         // 返回保存后结果
         return ${table.objectName}VO;
     }
@@ -128,17 +128,17 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
 	public ${table.className}VO findById(${table.primaryKey.javaType} id) {
 	    // 参数校验
         if (StringUtils.isBlank(id)) {
-           ExceptionCast.cast(ResultCode.PARAM_INVALID);
+           ExceptionCast.cast(CommonCode.INVALID_PARAM);
         }
         // 根据ID查询${table.description}
 		${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
-		if (${table.objectName}Model == null) {
+		if (${table.objectName} == null) {
             return null;
         }
         // 转换为VO对象
-        ${table.objectName}VO ${table.objectName}VO = new ${table.objectName}VO();
+        ${table.className}VO ${table.objectName}VO = new ${table.className}VO();
         BeanUtils.copyProperties(${table.objectName}, ${table.objectName}VO);
-         log.info("### ${table.description}修改成功 ###");
+        log.info("### ${table.description}查询完毕 ###");
         // 返回保存后结果
         return ${table.objectName}VO;
 	}
@@ -149,14 +149,14 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
      * @return
      */
     @Override
-    public List<${table.className}VO> listByParams(${table.className}QueryConditionVO queryConditionVO) {
+    public List<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO) {
         // 参数校验
         if (queryConditionVO == null) {
           queryConditionVO = new ${table.className}QueryConditionVO();
         }
         // 查询条件
-        QueryWrapper<${table.className}> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotBlank(conditionVO.getName()), "name", conditionVO.getName());
+        LambdaQueryWrapper<${table.className}> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotBlank(queryConditionVO.getName()), ${table.className}::getName, queryConditionVO.getName());
         // 执行查询
         List<${table.className}> ${table.objectName}List = ${table.objectName}Mapper.selectList(queryWrapper);
         log.info("### ${table.description}Model模糊查询完毕，总条数：{}条###", ${table.objectName}List.size());
@@ -179,7 +179,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
      * @return
      */
 	@Override
-    public QueryResult<${table.className}VO> listByPageAndParams(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size) {
+    public Pager<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size) {
         // 参数校验
         if (queryConditionVO == null) {
           queryConditionVO = new ${table.className}QueryConditionVO();
@@ -190,10 +190,9 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 分页条件
         Page<${table.className}> pageInfo = new Page(page, size);
         // 执行查询
-        Page<${table.className}> ${table.objectName}Page = ${table.objectName}Mapper.selectPage(pageInfo, queryWrapper);
-        long total = userPage.getTotal();
-        List<${table.className}> userList = ${table.objectName}Page.getRecords();
-
+        IPage<${table.className}> ${table.objectName}Page = ${table.objectName}Mapper.selectPage(pageInfo, queryWrapper);
+        long total = ${table.objectName}Page.getTotal();
+        List<${table.className}> ${table.objectName}List = ${table.objectName}Page.getRecords();
         // ${table.description}转换VO数据
         List<${table.className}VO> ${table.objectName}VOList = new ArrayList<>();
         ${table.objectName}List.forEach(${table.objectName} -> {
@@ -203,9 +202,6 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         });
         log.info("### ${table.description}转换VO数据完毕###");
         // 分装分页查询结果
-        QueryResult<${table.className}VO> queryResult = new QueryResult<>();
-        queryResult.setTotal(total);
-        queryResult.setList(${table.objectName}VOList);
-        return queryResult;
+        return new Pager(total, ${table.objectName}VOList);
     }
 }

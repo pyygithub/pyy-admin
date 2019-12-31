@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ApiModel(value = "SysLogQueryConditionVO", description = "系统日志保存和修改VO类")
-public class SysLogQueryConditionVO implements Serializable {
+public class LogQueryConditionVO implements Serializable {
 
     private static final long serialVersionUID = -6645663082545957651L;
 

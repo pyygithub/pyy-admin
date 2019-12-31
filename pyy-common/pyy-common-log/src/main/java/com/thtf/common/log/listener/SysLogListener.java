@@ -1,12 +1,10 @@
 package com.thtf.common.log.listener;
 
-import com.thtf.base.api.SysLogControllerApi;
-import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.LogSaveOrUpdateVO;
 import com.thtf.common.log.event.SysLogEvent;
 import com.thtf.common.log.feign.RemoteLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 
@@ -28,7 +26,7 @@ public class SysLogListener {
     @Async
     @EventListener(SysLogEvent.class)
     public void saveSysLog(SysLogEvent event) {
-        SysLogSaveOrUpdateVO sysLog = (SysLogSaveOrUpdateVO) event.getSource();
+        LogSaveOrUpdateVO sysLog = (LogSaveOrUpdateVO) event.getSource();
         // 保存日志
         remoteLogService.add(sysLog);
         log.info("远程日志记录成功：{}", sysLog);
