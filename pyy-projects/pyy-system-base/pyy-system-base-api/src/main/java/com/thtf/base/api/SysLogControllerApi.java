@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * ---------------------------
  */
 @Api(value="操作日志管理接口", description = "操作日志管理接口，提供操作的管理、查询")
+@RequestMapping("/v1")
 public interface SysLogControllerApi {
 
     @ApiOperation("分页查询日志列表")

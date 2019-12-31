@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * ---------------------------
  */
 @FeignClient(contextId = "remoteLogService", value = "pyy-system-base-server", fallbackFactory = RemoteLogFallbackFactory.class)
-@RequestMapping("/v1")
 public interface RemoteLogService extends SysLogControllerApi {
 
 }

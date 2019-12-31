@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
  * ---------------------------
  */
 @RestController
-@RequestMapping("/v1") // 这个一定不能加在接口上，不然feign启动就报冲突
 public class SysLogController implements SysLogControllerApi {
 
     @Autowired

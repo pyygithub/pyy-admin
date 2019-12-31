@@ -1,6 +1,7 @@
 package com.thtf.common.core.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -15,6 +16,7 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Setter
 @Getter
+@NoArgsConstructor
 public class ResponseResult<T> {
 
     private int code;
