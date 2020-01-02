@@ -3,7 +3,7 @@ package com.thtf.generate.api.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.thtf.common.core.model.CommonModel;
+import com.thtf.common.data.mybatis.model.CommonModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

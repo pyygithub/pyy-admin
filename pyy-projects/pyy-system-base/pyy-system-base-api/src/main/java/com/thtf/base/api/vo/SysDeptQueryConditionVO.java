@@ -17,8 +17,8 @@ import java.util.Date;
  * ---------------------------
  */
 @Data
-@ApiModel(value = "DeptQueryConditionVO",description = "部门查询条件")
-public class DeptQueryConditionVO {
+@ApiModel(value = "SysDeptQueryConditionVO",description = "部门查询条件")
+public class SysDeptQueryConditionVO {
 
     @ApiModelProperty("名称")
     private String name;

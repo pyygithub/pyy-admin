@@ -14,8 +14,8 @@ import lombok.Data;
  * ---------------------------
  */
 @Data
-@ApiModel(value = "DeptSaveOrUpdateVO",description = "部门保存和修改VO类")
-public class DeptSaveOrUpdateVO {
+@ApiModel(value = "SysDeptSaveOrUpdateVO",description = "部门保存和修改VO类")
+public class SysDeptSaveOrUpdateVO {
 
 	@ApiModelProperty("部门名称")
 	private String name;

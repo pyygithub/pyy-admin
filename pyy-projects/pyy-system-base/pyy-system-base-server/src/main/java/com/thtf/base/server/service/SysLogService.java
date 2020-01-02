@@ -1,8 +1,8 @@
 package com.thtf.base.server.service;
 
-import com.thtf.base.api.vo.LogQueryConditionVO;
-import com.thtf.base.api.vo.LogSaveOrUpdateVO;
-import com.thtf.base.api.vo.LogVO;
+import com.thtf.base.api.vo.SysLogQueryConditionVO;
+import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.SysLogVO;
 import com.thtf.common.core.response.Pager;
 
 /**
@@ -16,9 +16,9 @@ import com.thtf.common.core.response.Pager;
  */
 public interface SysLogService {
 
-    Pager<LogVO> findList(int page, int size, LogQueryConditionVO queryConditionVO);
+    Pager<SysLogVO> findList(int page, int size, SysLogQueryConditionVO queryConditionVO);
 
-    LogVO add(LogSaveOrUpdateVO logSaveOrUpdateVO);
+    SysLogVO add(SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO);
 
     void delete(String logId);
 

@@ -12,6 +12,7 @@
     <modules>
         <module>pyy-common</module>
         <module>pyy-projects</module>
+        <module>pyy-gateway</module>
     </modules>
 
     <properties>

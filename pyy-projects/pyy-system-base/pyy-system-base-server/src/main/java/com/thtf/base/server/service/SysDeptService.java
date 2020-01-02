@@ -2,7 +2,6 @@ package com.thtf.base.server.service;
 
 import com.thtf.base.api.vo.*;
 import com.thtf.common.core.response.Pager;
-import com.thtf.common.core.response.ResponseResult;
 
 import java.util.List;
 
@@ -15,20 +14,20 @@ import java.util.List;
  * 版本：  v1.0
  * ---------------------------
  */
-public interface DeptService {
+public interface SysDeptService {
 
     /**
      * 部门保存
      * @param sysDeptSaveOrUpdateVO
      */
-    DeptVO save(DeptSaveOrUpdateVO sysDeptSaveOrUpdateVO);
+    SysDeptTreeVO save(SysDeptSaveOrUpdateVO sysDeptSaveOrUpdateVO);
 
 	/**
      * 部门修改
      * @param id
      * @param sysDeptSaveOrUpdateVO
      */
-    DeptVO update(String id, DeptSaveOrUpdateVO sysDeptSaveOrUpdateVO);
+    SysDeptTreeVO update(String id, SysDeptSaveOrUpdateVO sysDeptSaveOrUpdateVO);
 
     /**
      * 部门删除
@@ -40,21 +39,11 @@ public interface DeptService {
      * 根据部门ID查询
      * @param id
      */
-    DeptVO findById(String id);
+    SysDeptTreeVO findById(String id);
 
     /**
-     * 部门模糊查询
-     * @param queryConditionVO
+     * 查询部门树
      * @return
      */
-    List<DeptVO> findList(DeptQueryConditionVO queryConditionVO);
-
-    /**
-     * 部门分页模糊查询
-     * @param queryConditionVO
-     * @param page
-     * @param size
-     * @return
-     */
-    Pager<DeptVO> findList(DeptQueryConditionVO queryConditionVO, Integer page, Integer size);
+    List<SysDeptTreeVO> getTreeList();
 }

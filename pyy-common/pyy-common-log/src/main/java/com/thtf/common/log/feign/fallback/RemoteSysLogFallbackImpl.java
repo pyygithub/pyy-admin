@@ -1,11 +1,11 @@
 package com.thtf.common.log.feign.fallback;
 
-import com.thtf.base.api.vo.LogQueryConditionVO;
-import com.thtf.base.api.vo.LogSaveOrUpdateVO;
-import com.thtf.base.api.vo.LogVO;
+import com.thtf.base.api.vo.SysLogQueryConditionVO;
+import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.SysLogVO;
 import com.thtf.common.core.response.Pager;
 import com.thtf.common.core.response.ResponseResult;
-import com.thtf.common.log.feign.RemoteLogService;
+import com.thtf.common.log.feign.RemoteSysLogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,19 +20,19 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @AllArgsConstructor
-public class RemoteLogFallbackImpl implements RemoteLogService {
+public class RemoteSysLogFallbackImpl implements RemoteSysLogService {
 
     private final Throwable throwable;
 
     @Override
-    public ResponseResult<Pager<LogVO>> findList(int page, int size, LogQueryConditionVO queryConditionVO) {
+    public ResponseResult<Pager<SysLogVO>> findList(int page, int size, SysLogQueryConditionVO queryConditionVO) {
         log.error("feign 日志查询失败:{}", queryConditionVO, throwable);
         return null;
     }
 
     @Override
-    public ResponseResult<LogVO> add(LogSaveOrUpdateVO logSaveOrUpdateVO) {
-        log.error("feign 保存日志失败:{}", logSaveOrUpdateVO, throwable);
+    public ResponseResult<SysLogVO> add(SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO) {
+        log.error("feign 保存日志失败:{}", sysLogSaveOrUpdateVO, throwable);
         return null;
     }
 

@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * ---------------------------
  * 部门 (Dept)         
@@ -14,8 +17,8 @@ import lombok.Data;
  * ---------------------------
  */
 @Data
-@ApiModel(value = "DeptVO",description = "部门类")
-public class DeptVO {
+@ApiModel(value = "SysDeptVO",description = "部门类")
+public class SysDeptTreeVO {
 
 	@ApiModelProperty("部门ID")
     private String id;
@@ -32,14 +35,15 @@ public class DeptVO {
 	@ApiModelProperty("创建人名称")
     private String createName;
 	@ApiModelProperty("创建时间")
-    private java.util.Date createTime;
+    private Date createTime;
 	@ApiModelProperty("修改人ID")
     private String updateId;
 	@ApiModelProperty("修改人名称")
     private String updateName;
 	@ApiModelProperty("修改时间")
-    private java.util.Date updateTime;
-	@ApiModelProperty("删除标记: 0-未删除 1-已删除")
-    private Integer deletedFlag;
+    private Date updateTime;
+
+    @ApiModelProperty("子节点列表")
+	private List<SysDeptTreeVO> children;
 
 }

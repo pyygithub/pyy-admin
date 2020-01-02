@@ -12,5 +12,5 @@ import com.thtf.base.api.model.*;
  * 版本：  v1.0
  * ---------------------------
  */
-public interface DeptMapper extends BaseMapper<Dept>{
+public interface SysDeptMapper extends BaseMapper<SysDept>{
 }

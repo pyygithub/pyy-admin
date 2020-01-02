@@ -1,9 +1,9 @@
 package com.thtf.base.server.controller;
 
-import com.thtf.base.api.LogControllerApi;
-import com.thtf.base.api.vo.LogQueryConditionVO;
-import com.thtf.base.api.vo.LogSaveOrUpdateVO;
-import com.thtf.base.api.vo.LogVO;
+import com.thtf.base.api.SysLogControllerApi;
+import com.thtf.base.api.vo.SysLogQueryConditionVO;
+import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.SysLogVO;
 import com.thtf.base.server.service.SysLogService;
 import com.thtf.common.core.response.Pager;
 import com.thtf.common.core.response.ResponseResult;
@@ -20,19 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
  * ---------------------------
  */
 @RestController
-public class LogController implements LogControllerApi {
+public class SysLogController implements SysLogControllerApi {
 
     @Autowired
     private SysLogService sysLogService;
 
     @Override
-    public ResponseResult<Pager<LogVO>> findList(int page, int size, LogQueryConditionVO queryConditionVO) {
+    public ResponseResult<Pager<SysLogVO>> findList(int page, int size, SysLogQueryConditionVO queryConditionVO) {
         return ResponseResult.SUCCESS(sysLogService.findList(page, size, queryConditionVO));
     }
 
     @Override
-    public ResponseResult<LogVO> add(LogSaveOrUpdateVO logSaveOrUpdateVO) {
-        return ResponseResult.SUCCESS(sysLogService.add(logSaveOrUpdateVO));
+    public ResponseResult<SysLogVO> add(SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO) {
+        return ResponseResult.SUCCESS(sysLogService.add(sysLogSaveOrUpdateVO));
     }
     @Override
     public ResponseResult delete(String logId) {

@@ -1,8 +1,8 @@
 package com.thtf.base.api;
 
-import com.thtf.base.api.vo.LogQueryConditionVO;
-import com.thtf.base.api.vo.LogSaveOrUpdateVO;
-import com.thtf.base.api.vo.LogVO;
+import com.thtf.base.api.vo.SysLogQueryConditionVO;
+import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
+import com.thtf.base.api.vo.SysLogVO;
 import com.thtf.common.core.response.Pager;
 import com.thtf.common.core.response.ResponseResult;
 import io.swagger.annotations.Api;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value="操作日志管理接口", description = "操作日志管理接口，提供操作的管理、查询")
 @RequestMapping("/v1")
-public interface LogControllerApi {
+public interface SysLogControllerApi {
 
     @ApiOperation("分页查询日志列表")
     @ApiImplicitParams({
@@ -30,11 +30,11 @@ public interface LogControllerApi {
             @ApiImplicitParam(name="size",value = "每页记录数", required=true, paramType="path", dataType="int")
     })
     @GetMapping("/sysLog/{page}/{size}")
-    ResponseResult<Pager<LogVO>> findList(@PathVariable("page")int page, @PathVariable("size")int size, LogQueryConditionVO queryConditionVO);
+    ResponseResult<Pager<SysLogVO>> findList(@PathVariable("page")int page, @PathVariable("size")int size, SysLogQueryConditionVO queryConditionVO);
 
     @ApiOperation("保存日志信息")
     @PostMapping("/sysLog")
-    ResponseResult<LogVO> add(@RequestBody LogSaveOrUpdateVO logSaveOrUpdateVO);
+    ResponseResult<SysLogVO> add(@RequestBody SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO);
 
     @ApiOperation("根据id删除日志")
     @ApiImplicitParam(name = "logId", value = "日志ID", required = true, dataType = "String", paramType = "path")

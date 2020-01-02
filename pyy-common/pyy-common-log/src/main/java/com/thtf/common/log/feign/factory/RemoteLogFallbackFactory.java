@@ -1,7 +1,7 @@
 package com.thtf.common.log.feign.factory;
 
-import com.thtf.common.log.feign.RemoteLogService;
-import com.thtf.common.log.feign.fallback.RemoteLogFallbackImpl;
+import com.thtf.common.log.feign.RemoteSysLogService;
+import com.thtf.common.log.feign.fallback.RemoteSysLogFallbackImpl;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
  * ---------------------------
  */
 @Component
-public class RemoteLogFallbackFactory implements FallbackFactory<RemoteLogService> {
+public class RemoteLogFallbackFactory implements FallbackFactory<RemoteSysLogService> {
     @Override
-    public RemoteLogService create(Throwable throwable) {
-        return new RemoteLogFallbackImpl(throwable);
+    public RemoteSysLogService create(Throwable throwable) {
+        return new RemoteSysLogFallbackImpl(throwable);
     }
 }

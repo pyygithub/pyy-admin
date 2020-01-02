@@ -17,7 +17,7 @@ import lombok.Data;
  */
 @Data
 @TableName(value = "sys_dept")
-public class Dept extends CommonModel{
+public class SysDept extends CommonModel{
 
 	/** 部门ID */
 	@TableId(type = IdType.ID_WORKER_STR)

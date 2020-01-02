@@ -3,7 +3,7 @@ package com.thtf.common.log.aspect;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
-import com.thtf.base.api.vo.LogSaveOrUpdateVO;
+import com.thtf.base.api.vo.SysLogSaveOrUpdateVO;
 import com.thtf.common.auth.utils.UserSecurityUtil;
 import com.thtf.common.core.constant.PyyConstant;
 import com.thtf.common.core.response.ResponseResult;
@@ -43,7 +43,7 @@ public class SysLogAspect {
     /**
      * log实体类
      **/
-    private ThreadLocal<LogSaveOrUpdateVO> sysLogThreadLocal = new ThreadLocal<>();
+    private ThreadLocal<SysLogSaveOrUpdateVO> sysLogThreadLocal = new ThreadLocal<>();
 
     /**
      * 事件发布是由ApplicationContext对象管控的，我们发布事件前需要注入ApplicationContext对象调用publishEvent方法完成事件发布
@@ -69,7 +69,7 @@ public class SysLogAspect {
      */
     @Before(value = "sysLogAspect()")
     public void recordLog(JoinPoint joinPoint) throws Throwable {
-        LogSaveOrUpdateVO sysLog = new LogSaveOrUpdateVO();
+        SysLogSaveOrUpdateVO sysLog = new SysLogSaveOrUpdateVO();
         // 将当前实体保存到threadLocal
         sysLogThreadLocal.set(sysLog);
         // 开始时间
@@ -107,7 +107,7 @@ public class SysLogAspect {
     @AfterReturning(returning = "ret", pointcut = "sysLogAspect()")
     public void doAfterReturning(Object ret) {
         //得到当前线程的log对象
-        LogSaveOrUpdateVO sysLog = sysLogThreadLocal.get();
+        SysLogSaveOrUpdateVO sysLog = sysLogThreadLocal.get();
         // 处理完请求，返回内容
         ResponseResult r = Convert.convert(ResponseResult.class, ret);
         if (r.getCode() == 200) {
@@ -131,7 +131,7 @@ public class SysLogAspect {
     @AfterThrowing(pointcut = "sysLogAspect()", throwing = "e")
     public void doAfterThrowable(Throwable e) {
         //得到当前线程的log对象
-        LogSaveOrUpdateVO sysLog = sysLogThreadLocal.get();
+        SysLogSaveOrUpdateVO sysLog = sysLogThreadLocal.get();
         // 异常
         sysLog.setType(PyyConstant.LOG_TYPE_EXCEPTION);
         // 异常对象

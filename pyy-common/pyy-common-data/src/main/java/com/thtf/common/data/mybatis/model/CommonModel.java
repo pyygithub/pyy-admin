@@ -1,4 +1,4 @@
-package com.thtf.common.core.model;
+package com.thtf.common.data.mybatis.model;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
