@@ -1,5 +1,6 @@
 package com.thtf.base.api.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,12 +19,15 @@ import java.util.List;
  */
 @Data
 @ApiModel(value = "SysDeptVO",description = "部门类")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SysDeptTreeVO {
 
 	@ApiModelProperty("部门ID")
     private String id;
 	@ApiModelProperty("部门名称")
     private String name;
+    @ApiModelProperty("部门名称")
+    private String label;
 	@ApiModelProperty("上级部门ID")
     private String parentId;
 	@ApiModelProperty("排序")

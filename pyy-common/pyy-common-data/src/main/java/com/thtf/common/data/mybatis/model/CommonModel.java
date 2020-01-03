@@ -2,6 +2,7 @@ package com.thtf.common.data.mybatis.model;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import java.util.Date;
@@ -42,5 +43,6 @@ public class CommonModel {
     private Date updateTime;
 
     /** 删除标记 */
+    @TableLogic
     private Integer deletedFlag = 0;
 }

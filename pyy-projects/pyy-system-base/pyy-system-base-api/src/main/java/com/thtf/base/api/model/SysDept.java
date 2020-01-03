@@ -3,6 +3,7 @@ package com.thtf.base.api.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.thtf.common.data.mybatis.model.CommonModel;
 import lombok.Data;
 
 
@@ -17,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @TableName(value = "sys_dept")
-public class SysDept extends CommonModel{
+public class SysDept extends CommonModel {
 
 	/** 部门ID */
 	@TableId(type = IdType.ID_WORKER_STR)

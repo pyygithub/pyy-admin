@@ -105,6 +105,10 @@ public class SysDeptServiceImpl implements SysDeptService {
         // 属性赋值
         BeanUtils.copyProperties(sysDeptSaveOrUpdateVO, sysDept);
         sysDept.setId(id);
+        // 父级部门不能为自己
+        if (StringUtils.equals(id, sysDeptSaveOrUpdateVO.getParentId())) {
+            ExceptionCast.cast(BaseServerCode.PARENT_IS_SELF);
+        }
         // 执行修改
         int row = sysDeptMapper.updateById(sysDept);
         if (row != 1) {
@@ -158,6 +162,7 @@ public class SysDeptServiceImpl implements SysDeptService {
             // 转换SysDeptTreeVO
             SysDeptTreeVO treeNodeVO = new SysDeptTreeVO();
             BeanUtils.copyProperties(rootDept, treeNodeVO);
+            treeNodeVO.setLabel(rootDept.getName());
             treeNodeVO.setChildren(findChildrenByParentId(rootDept.getId()));
 
             deptTreeVOList.add(treeNodeVO);
@@ -182,6 +187,7 @@ public class SysDeptServiceImpl implements SysDeptService {
             // 转换SysDeptTreeVO
             SysDeptTreeVO treeNodeVO = new SysDeptTreeVO();
             BeanUtils.copyProperties(dept, treeNodeVO);
+            treeNodeVO.setLabel(dept.getName());
             treeNodeVO.setChildren(findChildrenByParentId(dept.getId()));
             children.add(treeNodeVO);
         });

@@ -70,6 +70,5 @@ mybatis-plus:
   refresh-mapper: true
   global-config:
     db-config:
-      logic-delete-field: deletedFlag  #全局逻辑删除属性名（非数据库字段名）
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
