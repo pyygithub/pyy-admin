@@ -24,6 +24,13 @@
             <artifactId>pyy-common-core</artifactId>
             <version>${pyy.version}</version>
         </dependency>
+        <!-- pyy-common-data -->
+        <dependency>
+            <groupId>com.thtf</groupId>
+            <artifactId>pyy-common-data</artifactId>
+            <version>${pyy.version}</version>
+        </dependency>
+        <!-- pyy-common-swagger -->
         <dependency>
             <groupId>com.thtf</groupId>
             <artifactId>pyy-common-swagger</artifactId>

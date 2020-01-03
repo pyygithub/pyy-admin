@@ -20,9 +20,8 @@ import java.util.List;
  * 版本：  v1.0
  * ---------------------------
  */
-@Api(tags = "SysSysDeptController", description = "部门相关接口,提供增删改查功能")
 @RestController
-public class SysSysDeptController implements SysDeptControllerApi {
+public class SysDeptController implements SysDeptControllerApi {
 
 	@Autowired
 	private SysDeptService sysDeptService;

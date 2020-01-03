@@ -22,7 +22,6 @@ import java.util.List;
  * ---------------------------
  */
 @RestController
-@RequestMapping("/v1")
 public class GenerateController implements GenerateControllerApi {
 
     @Autowired

@@ -1,23 +1,15 @@
 package ${table.controllerPackageName};
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.MediaType;
-import io.swagger.annotations.Api;
+import ${table.modelPackageName}.${table.className};
+import ${table.servicePackageName}.${table.className}Service;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import ${table.modelPackageName}.${table.className};
-import ${table.servicePackageName}.${table.className}Service;
+import java.util.List;
 
 /**
  * ---------------------------
@@ -30,92 +22,40 @@ import ${table.servicePackageName}.${table.className}Service;
  */
 @Api(tags = "${table.className}Controller", description = "${table.description}相关接口,提供增删改查功能")
 @RestController
-@RequestMapping(value = "/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
-public class ${table.className}Controller {
+@RequestMapping(value = "/${table.objectName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
+public class ${table.className}Controller implements ${table.className}ControllerApi{
 
 	@Autowired
 	private ${table.className}Service ${table.objectName}Service;
 
-    /**
-     * 保存${table.description}
-     * @param record
-     * @return
-     */
-    @ApiOperation(value = "保存${table.description}", notes = "创建新${table.description}")
-    @ApiImplicitParam(name = "record", value = "${table.description}对象", required = true, dataType = "${table.className}SaveOrUpdateVO", paramType = "body")
-    @PostMapping("/${table.objectName}")
-    public ResponseResult<${table.className}VO> save(@Valid @RequestBody ${table.className}SaveOrUpdateVO record) {
+    @Override
+    public ResponseResult<${table.className}VO> save(${table.className}SaveOrUpdateVO record) {
         return ResponseResult.SUCCESS(${table.objectName}Service.save(record));
     }
 
-    /**
-     * 修改${table.description}
-     * @param id
-     * @param record
-     * @return
-     */
-    @ApiOperation(value = "修改${table.description}", notes = "根据ID修改${table.description}")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path"),
-            @ApiImplicitParam(name = "record", value = "${table.description}对象", required = true, dataType = "${table.className}SaveOrUpdateVO", paramType = "body")
-    })
-    @PutMapping("/${table.objectName}/{id}")
-    public ResponseResult<${table.className}VO> update(@Valid @PathVariable(value = "id") String id, @RequestBody ${table.className}SaveOrUpdateVO record) {
+    @Override
+    public ResponseResult<${table.className}VO> update(String id, ${table.className}SaveOrUpdateVO record) {
         return ResponseResult.SUCCESS(${table.objectName}Service.update(id, record));
     }
 
-    /**
-     * 删除${table.description}
-     * @param id
-     * @return
-     */
-	@ApiOperation(value = "删除${table.description}", notes = "根据ID${table.description}")
-    @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path")
-    @DeleteMapping("/${table.objectName}/{id}")
-    public ResponseResult delete(@Valid @PathVariable(value = "id") String id) {
+    @Override
+    public ResponseResult delete(String id) {
         ${table.objectName}Service.delete(id);
         return ResponseResult.SUCCESS();
     }
 
-    /**
-     * 单个${table.description}查询
-     * @param id
-     * @return
-     */
-    @ApiOperation(value = "${table.description}查询", notes = "根据ID${table.description}查询")
-    @ApiImplicitParam(name = "id", value = "${table.description}ID", required = true, dataType = "String", paramType = "path")
-    @GetMapping("/${table.objectName}/{id}")
-    public ResponseResult<${table.className}VO> findById(@Valid @PathVariable("id") String id) {
+    @Override
+    public ResponseResult<${table.className}VO> findById(String id) {
         return ResponseResult.SUCCESS(${table.objectName}Service.findById(id));
     }
 
-    /**
-     * ${table.description}模糊查询
-     * @param queryConditionVO
-     * @return
-     */
-    @ApiOperation(value = "${table.description}模糊查询", notes = "${table.description}不带分页模糊查询")
-    @GetMapping("/${table.objectName}s")
+    @Override
     public ResponseResult<List<${table.className}VO>> getList(${table.className}QueryConditionVO queryConditionVO) {
         return ResponseResult.SUCCESS(${table.objectName}Service.findList(queryConditionVO));
     }
 
-    /**
-     * ${table.description}分页查询
-     * @param queryConditionVO
-     * @param page
-     * @param size
-     * @return
-     */
-    @ApiOperation(value = "${table.description}分页查询", notes = "${table.description}分页模糊查询")
-    @ApiImplicitParams({
-             @ApiImplicitParam(name = "page", value = "当前页码", required = true, dataType = "int", paramType = "query"),
-             @ApiImplicitParam(name = "size", value = "分页尺寸", required = true, dataType = "int", paramType = "query")
-    })
-    @GetMapping("/${table.objectName}s/page")
-    public ResponseResult<Pager<${table.className}VO>> getPageList(${table.className}QueryConditionVO queryConditionVO,
-                                     @RequestParam(value = "page", defaultValue = "1") Integer page,
-                                     @RequestParam(value = "size", defaultValue = "10") Integer size) {
+    @Override
+    public ResponseResult<Pager<${table.className}VO>> getPageList(${table.className}QueryConditionVO queryConditionVO, int page, int size) {
         return ResponseResult.SUCCESS(${table.objectName}Service.findList(queryConditionVO, page, size));
     }
 	

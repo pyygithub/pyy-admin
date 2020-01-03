@@ -13,11 +13,20 @@ spring:
         locator: #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
           enabled: true
       routes:
+        # 基础服务工程
         - id: pyy-system-base-server  # 唯一标识，通常使用服务id
           uri: lb://pyy-system-base-server  # 目标URL，lb代表从注册中心获取服务
           predicates:
             # Predicate集合
             - Path=/v1/base-server/**  # 匹配转发路径
+          filters:
+          - StripPrefix=2 # 从第几级开始转发，数字从0开始
+        # 代码自动生成服务工程
+        - id: pyy-system-generate-server
+          uri: lb://pyy-system-generate-server
+          predicates:
+            # Predicate集合
+            - Path=/v1/generate-server/**
           filters:
           - StripPrefix=2 # 从第几级开始转发，数字从0开始
 # actuator相关配置

@@ -1,27 +1,22 @@
 package ${table.serviceImplPackageName};
 
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
-import tk.mybatis.mapper.entity.Example;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-
 import ${table.modelPackageName}.*;
 import ${table.voPackageName}.*;
 import ${table.daoPackageName}.${table.className}Mapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ---------------------------
@@ -57,7 +52,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
             ExceptionCast.cast(ResultCode.SAVE_ERROR, "${table.description}");
         }
         // 转换为VO对象
-        ${table.objectName}VO ${table.objectName}VO = new ${table.objectName}VO();
+        ${table.className}VO ${table.objectName}VO = new ${table.className}VO();
         BeanUtils.copyProperties(${table.objectName}, ${table.objectName}VO);
         log.info("### ${table.description}保存完毕 ###");
         // 返回保存后结果
@@ -76,8 +71,8 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         }
         // 根据ID查询${table.description}
         ${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
-        if (${table.objectName}Model == null) {
-            ExceptionCast.cast(ResultCode.RESULT_DATA_NONE, "${table.description} id=" + id);
+        if (${table.objectName} == null) {
+            ExceptionCast.cast(ResultCode.RESULT_DATA_NONE);
         }
         // 执行删除
         int row = ${table.objectName}Mapper.deleteById(id);
@@ -101,7 +96,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 根据ID查询${table.description}
         ${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
         if (${table.objectName} == null) {
-            throw new CustomException(ResultCode.RESULT_DATA_NONE, "${table.description}");
+            throw new CustomException(ResultCode.RESULT_DATA_NONE);
         }
 
         // 属性赋值
@@ -113,7 +108,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
            ExceptionCast.cast(ResultCode.DELETE_ERROR, "${table.description}");
         }
         // 转换为VO对象
-        ${table.objectName}VO ${table.objectName}VO = new ${table.objectName}VO();
+        ${table.className}VO ${table.objectName}VO = new ${table.className}VO();
         BeanUtils.copyProperties(${table.objectName}, ${table.objectName}VO);
          log.info("### ${table.description}修改完毕 ###");
         // 返回保存后结果
@@ -179,14 +174,14 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
      * @return
      */
 	@Override
-    public Pager<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size) {
+    public Pager<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, int page, int size) {
         // 参数校验
         if (queryConditionVO == null) {
           queryConditionVO = new ${table.className}QueryConditionVO();
         }
         // 查询条件
-        QueryWrapper<${table.className}> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotBlank(conditionVO.getName()), "name", conditionVO.getName());
+        LambdaQueryWrapper<${table.className}> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotBlank(queryConditionVO.getName()), ${table.className}::getName, queryConditionVO.getName());
         // 分页条件
         Page<${table.className}> pageInfo = new Page(page, size);
         // 执行查询

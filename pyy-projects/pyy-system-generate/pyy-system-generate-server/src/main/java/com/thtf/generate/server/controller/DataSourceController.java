@@ -23,7 +23,6 @@ import java.util.List;
  * ---------------------------
  */
 @RestController
-@RequestMapping("/v1")
 public class DataSourceController implements DataSourceControllerApi {
 
     @Autowired

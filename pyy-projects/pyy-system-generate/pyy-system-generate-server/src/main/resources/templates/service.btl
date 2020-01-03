@@ -55,5 +55,5 @@ public interface ${table.className}Service {
      * @param size
      * @return
      */
-    QueryResult<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, Integer page, Integer size);
+    QueryResult<${table.className}VO> findList(${table.className}QueryConditionVO queryConditionVO, int page, int size);
 }

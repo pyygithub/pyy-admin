@@ -21,33 +21,34 @@ import java.util.List;
  * ========================
  */
 @Api(value="代码自动生成 数据源管理接口",description = "代码自动生成 数据源管理接口，提供数据源的管理、查询接口")
+@RequestMapping("/dataSource")
 public interface DataSourceControllerApi {
     @ApiOperation("查询数据源列表")
-    @GetMapping("/dataSources")
+    @GetMapping("/list")
     ResponseResult<List<DataSource>> findList(DataSourceQueryConditionVO conditionVO) ;
 
     @ApiOperation("分页查询数据源列表")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="page",value = "页码", required=true, paramType="path", dataType="int"),
-            @ApiImplicitParam(name="size",value = "每页记录数", required=true, paramType="path", dataType="int")
+            @ApiImplicitParam(name="page",value = "页码", required=true, paramType="query", dataType="int"),
+            @ApiImplicitParam(name="size",value = "每页记录数", required=true, paramType="query", dataType="int")
     })
-    @GetMapping("/dataSources/{page}/{size}")
-    ResponseResult<Pager<DataSource>> findList(@PathVariable("page") int page, @PathVariable("size") int size, DataSourceQueryConditionVO conditionVO) ;
+    @GetMapping("/page")
+    ResponseResult<Pager<DataSource>> findList(@RequestParam("page") int page, @RequestParam("size") int size, DataSourceQueryConditionVO conditionVO) ;
 
     @ApiOperation("添加数据源")
-    @PostMapping("/dataSource")
+    @PostMapping()
     ResponseResult<DataSource> add(@RequestBody DataSource dataSource);
 
     @ApiOperation("根据id查询数据源")
-    @GetMapping("/dataSource/{id}")
+    @GetMapping("/{id}")
     ResponseResult<DataSource> findById(@PathVariable("id") String id);
 
     @ApiOperation("编辑数据源")
-    @PutMapping("/dataSource/{id}")
+    @PutMapping("/{id}")
     ResponseResult<DataSource> edit(@PathVariable("id") String id, @RequestBody DataSource dataSource);
 
     @ApiOperation("删除数据源")
-    @DeleteMapping("/dataSource/{id}")
+    @DeleteMapping("/{id}")
     ResponseResult delete(@PathVariable("id") String id);
 
 
