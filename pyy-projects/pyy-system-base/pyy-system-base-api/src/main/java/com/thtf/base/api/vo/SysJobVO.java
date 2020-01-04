@@ -21,8 +21,8 @@ public class SysJobVO {
     private String id;
 	@ApiModelProperty("部门名称")
     private String name;
-	@ApiModelProperty("部门ID")
-    private String deptId;
+	@ApiModelProperty("部门")
+    private SysDeptVO dept;
 	@ApiModelProperty("排序")
     private Integer sort;
 	@ApiModelProperty("备注")

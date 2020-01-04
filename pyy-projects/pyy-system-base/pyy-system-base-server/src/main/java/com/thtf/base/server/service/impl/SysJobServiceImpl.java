@@ -4,11 +4,14 @@ package com.thtf.base.server.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.thtf.base.api.model.SysDept;
 import com.thtf.base.api.model.SysJob;
+import com.thtf.base.api.vo.SysDeptVO;
 import com.thtf.base.api.vo.SysJobQueryConditionVO;
 import com.thtf.base.api.vo.SysJobSaveOrUpdateVO;
 import com.thtf.base.api.vo.SysJobVO;
 import com.thtf.base.server.enums.BaseServerCode;
+import com.thtf.base.server.mapper.SysDeptMapper;
 import com.thtf.base.server.mapper.SysJobMapper;
 import com.thtf.base.server.service.SysJobService;
 import com.thtf.common.core.exception.ExceptionCast;
@@ -24,7 +27,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -43,6 +48,9 @@ public class SysJobServiceImpl implements SysJobService {
 
 	@Autowired
 	private SysJobMapper sysJobMapper;
+
+	@Autowired
+    private SysDeptMapper sysDeptMapper;
 
     /**
      * 岗位保存
@@ -142,6 +150,13 @@ public class SysJobServiceImpl implements SysJobService {
         // 转换为VO对象
         SysJobVO sysJobVO = new SysJobVO();
         BeanUtils.copyProperties(sysJob, sysJobVO);
+
+        // 查询关联部门
+        SysDept sysDept = sysDeptMapper.selectById(sysJob.getDeptId());
+        SysDeptVO sysDeptVO = new SysDeptVO();
+        sysDeptVO.setId(sysDept.getId());
+        sysDeptVO.setName(sysDept.getName());
+        sysJobVO.setDept(sysDeptVO);
         log.info("### 岗位查询完毕 ###");
         // 返回保存后结果
         return sysJobVO;
@@ -158,19 +173,9 @@ public class SysJobServiceImpl implements SysJobService {
         if (queryConditionVO == null) {
           queryConditionVO = new SysJobQueryConditionVO();
         }
-        // 查询条件
-        LambdaQueryWrapper<SysJob> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotBlank(queryConditionVO.getName()), SysJob::getName, queryConditionVO.getName());
         // 执行查询
-        List<SysJob> sysJobList = sysJobMapper.selectList(queryWrapper);
-        log.info("### 岗位Model模糊查询完毕，总条数：{}条###", sysJobList.size());
-        // 岗位转换VO数据
-        List<SysJobVO> sysJobVOList = new ArrayList<>();
-        sysJobList.forEach(sysJob -> {
-            SysJobVO sysJobVO = new SysJobVO();
-            BeanUtils.copyProperties(sysJob, sysJobVO);
-            sysJobVOList.add(sysJobVO);
-        });
+        List<SysJobVO> sysJobVOList = sysJobMapper.selectJobDeptList(queryConditionVO);
+
         log.info("### 岗位转换VO数据完毕###");
         return sysJobVOList;
     }
@@ -188,22 +193,12 @@ public class SysJobServiceImpl implements SysJobService {
         if (queryConditionVO == null) {
           queryConditionVO = new SysJobQueryConditionVO();
         }
-        // 查询条件
-        LambdaQueryWrapper<SysJob> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotBlank(queryConditionVO.getName()), SysJob::getName, queryConditionVO.getName());
         // 分页条件
-        Page<SysJob> pageInfo = new Page(page, size);
+        Page<SysJobVO> pageInfo = new Page(page, size);
         // 执行查询
-        IPage<SysJob> sysJobPage = sysJobMapper.selectPage(pageInfo, queryWrapper);
-        long total = sysJobPage.getTotal();
-        List<SysJob> sysJobList = sysJobPage.getRecords();
-        // 岗位转换VO数据
-        List<SysJobVO> sysJobVOList = new ArrayList<>();
-        sysJobList.forEach(sysJob -> {
-            SysJobVO sysJobVO = new SysJobVO();
-            BeanUtils.copyProperties(sysJob, sysJobVO);
-            sysJobVOList.add(sysJobVO);
-        });
+        List<SysJobVO> sysJobVOList = sysJobMapper.selectJobDeptList(pageInfo, queryConditionVO);
+        pageInfo.setRecords(sysJobVOList);
+        long total = pageInfo.getTotal();
         log.info("### 岗位转换VO数据完毕###");
         // 分装分页查询结果
         return new Pager(total, sysJobVOList);

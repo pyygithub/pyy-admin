@@ -18,7 +18,7 @@ import java.util.List;
  * ---------------------------
  */
 @Data
-@ApiModel(value = "SysDeptVO",description = "部门类")
+@ApiModel(value = "SysDeptTreeVO",description = "部门类")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SysDeptTreeVO {
 
