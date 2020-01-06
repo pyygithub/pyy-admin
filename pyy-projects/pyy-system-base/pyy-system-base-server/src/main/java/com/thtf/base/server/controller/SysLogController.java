@@ -26,6 +26,11 @@ public class SysLogController implements SysLogControllerApi {
     private SysLogService sysLogService;
 
     @Override
+    public ResponseResult<SysLogVO> findById(String logId) {
+        return ResponseResult.SUCCESS(sysLogService.findById(logId));
+    }
+
+    @Override
     public ResponseResult<Pager<SysLogVO>> findList(int page, int size, SysLogQueryConditionVO queryConditionVO) {
         return ResponseResult.SUCCESS(sysLogService.findList(page, size, queryConditionVO));
     }

@@ -19,7 +19,7 @@ public class CustomException extends RuntimeException {
 
     public CustomException(ResponseCode responseCode) {
         //异常信息为错误代码+异常信息
-        super("错误代码："+responseCode.code()+"错误信息："+responseCode.message());
+        super("错误代码："+responseCode.code()+" <br/>错误信息："+responseCode.message());
         this.responseCode = responseCode;
     }
 

@@ -24,6 +24,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/sysLog")
 public interface SysLogControllerApi {
 
+    @ApiOperation("根据ID查询日志详情")
+    @ApiImplicitParam(name = "logId", value = "日志ID", required = true, dataType = "String", paramType = "path")
+    @GetMapping("/{logId}")
+    ResponseResult<SysLogVO> findById(@PathVariable("logId") String logId);
+
     @ApiOperation("分页查询日志列表")
     @ApiImplicitParams({
             @ApiImplicitParam(name="page",value = "页码", required=true, paramType="query", dataType="int"),

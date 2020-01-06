@@ -50,6 +50,8 @@ public class SysLogServiceImpl implements SysLogService {
                 .ge(StringUtils.isNotBlank(queryConditionVO.getStartTime()), SysLog::getStartTime, queryConditionVO.getStartTime())
                 .le(StringUtils.isNotBlank(queryConditionVO.getFinishTime()), SysLog::getFinishTime, queryConditionVO.getFinishTime())
                 .like(StringUtils.isNotBlank(queryConditionVO.getUsername()), SysLog::getUsername, queryConditionVO.getUsername());
+
+        queryWrapper.select(SysLog.class, info -> !info.getColumn().equals("ex_detail"));
         // 分页条件
         IPage<SysLog> page = sysLogMapper.selectPage(new Page(pages, size), queryWrapper);
 
@@ -94,5 +96,17 @@ public class SysLogServiceImpl implements SysLogService {
         if (row != 1) {
             ExceptionCast.cast(BaseServerCode.DELETE_ERROR);
         }
+    }
+
+    @Override
+    public SysLogVO findById(String id) {
+        if (StringUtils.isBlank(id)) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        SysLog sysLog = sysLogMapper.selectById(id);
+        // 返回查询对象
+        SysLogVO sysLogVO = new SysLogVO();
+        BeanUtils.copyProperties(sysLog, sysLogVO);
+        return sysLogVO;
     }
 }

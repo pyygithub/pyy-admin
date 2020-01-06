@@ -22,4 +22,5 @@ public interface SysLogService {
 
     void delete(String logId);
 
+    SysLogVO findById(String id);
 }

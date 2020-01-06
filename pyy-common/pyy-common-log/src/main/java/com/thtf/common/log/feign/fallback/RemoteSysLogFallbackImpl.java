@@ -25,6 +25,12 @@ public class RemoteSysLogFallbackImpl implements RemoteSysLogService {
     private final Throwable throwable;
 
     @Override
+    public ResponseResult<SysLogVO> findById(String logId) {
+        log.error("feign 日志详情查询失败:{}", logId, throwable);
+        return null;
+    }
+
+    @Override
     public ResponseResult<Pager<SysLogVO>> findList(int page, int size, SysLogQueryConditionVO queryConditionVO) {
         log.error("feign 日志查询失败:{}", queryConditionVO, throwable);
         return null;
