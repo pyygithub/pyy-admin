@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * ---------------------------
@@ -32,7 +33,7 @@ public class SysLogSaveOrUpdateVO implements Serializable {
     private String userId;
 
     @ApiModelProperty("操作人名称")
-    private String userName;
+    private String username;
 
     @ApiModelProperty("操作描述")
     private String description;
@@ -59,10 +60,10 @@ public class SysLogSaveOrUpdateVO implements Serializable {
     private Integer operateType;
 
     @ApiModelProperty("开始时间")
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @ApiModelProperty("完成时间")
-    private LocalDateTime finishTime;
+    private Date finishTime;
 
     @ApiModelProperty("消耗时间")
     private Long consumingTime;

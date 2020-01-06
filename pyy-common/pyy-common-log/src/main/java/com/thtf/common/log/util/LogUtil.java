@@ -1,7 +1,7 @@
 package com.thtf.common.log.util;
 
+import com.thtf.common.log.annotation.Log;
 import com.thtf.common.core.constant.PyyConstant;
-import com.thtf.common.log.annotation.SysOperateLog;
 import lombok.experimental.UtilityClass;
 import org.aspectj.lang.JoinPoint;
 
@@ -38,17 +38,17 @@ public class LogUtil {
         Class targetClass = Class.forName(targetName);
         // 获取类里面的方法
         Method[] methods = targetClass.getMethods();
-        String description = "";
+        String desc = "";
         for (Method method : methods) {
             if (method.getName().equals(methodName)) {
                 Class[] clazzs = method.getParameterTypes();
                 if (clazzs.length == args.length) {
-                    description = method.getAnnotation(SysOperateLog.class).descrption();
+                    desc = method.getAnnotation(Log.class).desc();
                     break;
                 }
             }
         }
-        return description;
+        return desc;
     }
 
 

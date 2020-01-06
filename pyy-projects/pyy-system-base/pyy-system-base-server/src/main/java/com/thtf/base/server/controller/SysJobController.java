@@ -7,6 +7,7 @@ import com.thtf.base.api.vo.SysJobVO;
 import com.thtf.base.server.service.SysJobService;
 import com.thtf.common.core.response.Pager;
 import com.thtf.common.core.response.ResponseResult;
+import com.thtf.common.log.annotation.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,16 +29,19 @@ public class SysJobController implements SysJobControllerApi {
 	private SysJobService sysJobService;
 
 	@Override
+    @Log(desc = "添加岗位")
     public ResponseResult<SysJobVO> save(SysJobSaveOrUpdateVO record) {
         return ResponseResult.SUCCESS(sysJobService.save(record));
     }
 
     @Override
+    @Log(desc = "修改岗位")
     public ResponseResult<SysJobVO> update(String id, SysJobSaveOrUpdateVO record) {
         return ResponseResult.SUCCESS(sysJobService.update(id, record));
     }
 
     @Override
+    @Log(desc = "删除岗位")
     public ResponseResult delete(String id) {
         sysJobService.delete(id);
         return ResponseResult.SUCCESS();

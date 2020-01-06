@@ -9,6 +9,9 @@ import com.thtf.common.core.constant.PyyConstant;
 import com.thtf.common.core.response.ResponseResult;
 import com.thtf.common.log.event.SysLogEvent;
 import com.thtf.common.log.util.LogUtil;
+import eu.bitwalker.useragentutils.Browser;
+import eu.bitwalker.useragentutils.OperatingSystem;
+import eu.bitwalker.useragentutils.UserAgent;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -21,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * ---------------------------
@@ -54,9 +58,9 @@ public class SysLogAspect {
     }
 
     /***
-     * 定义controller切入点拦截规则，拦截SysLog注解的方法
+     * 定义controller切入点拦截规则，拦截@Log注解的方法
      */
-    @Pointcut("@annotation(com.thtf.common.log.annotation.SysOperateLog)")
+    @Pointcut("@annotation(com.thtf.common.log.annotation.Log)")
     public void sysLogAspect() {
 
     }
@@ -75,12 +79,14 @@ public class SysLogAspect {
         // 开始时间
         long beginTime = Instant.now().toEpochMilli();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        sysLog.setUserName(UserSecurityUtil.getUsername());
+        sysLog.setUsername(UserSecurityUtil.getUsername());
         sysLog.setActionUrl(URLUtil.getPath(request.getRequestURI()));
-        sysLog.setStartTime(LocalDateTime.now());
+        sysLog.setStartTime(new Date());
         sysLog.setRequestIp(ServletUtil.getClientIP(request));
         sysLog.setRequestMethod(request.getMethod());
-        sysLog.setBrowser(request.getHeader("user-agent"));
+        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+        Browser browser = userAgent.getBrowser();
+        sysLog.setBrowser(browser.getName());
         //访问目标方法的参数 可动态改变参数值
         Object[] args = joinPoint.getArgs();
         // 类名
@@ -88,7 +94,7 @@ public class SysLogAspect {
         //获取执行的方法名
         String name = joinPoint.getSignature().getName();
         sysLog.setActionMethod(name);
-        sysLog.setFinishTime(LocalDateTime.now());
+        sysLog.setFinishTime(new Date());
         // 参数
         sysLog.setParams(Arrays.toString(args));
         // 获取操作类型

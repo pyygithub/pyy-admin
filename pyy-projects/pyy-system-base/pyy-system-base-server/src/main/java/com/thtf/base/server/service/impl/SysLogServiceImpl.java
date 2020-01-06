@@ -45,11 +45,11 @@ public class SysLogServiceImpl implements SysLogService {
         }
         // 查询条件
         LambdaQueryWrapper<SysLog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(queryConditionVO.getType() != null, SysLog::getType, queryConditionVO.getType())
+        queryWrapper.eq(SysLog::getType, queryConditionVO.getType())
                 .eq(queryConditionVO.getOperateType() != null, SysLog::getOperateType, queryConditionVO.getOperateType())
-                .gt(queryConditionVO.getStartTime() != null, SysLog::getStartTime, queryConditionVO.getStartTime())
-                .lt(queryConditionVO.getFinishTime() != null, SysLog::getFinishTime, queryConditionVO.getFinishTime())
-                .like(StringUtils.isNotBlank(queryConditionVO.getUserName()), SysLog::getUserName, queryConditionVO.getUserName());
+                .ge(StringUtils.isNotBlank(queryConditionVO.getStartTime()), SysLog::getStartTime, queryConditionVO.getStartTime())
+                .le(StringUtils.isNotBlank(queryConditionVO.getFinishTime()), SysLog::getFinishTime, queryConditionVO.getFinishTime())
+                .like(StringUtils.isNotBlank(queryConditionVO.getUsername()), SysLog::getUsername, queryConditionVO.getUsername());
         // 分页条件
         IPage<SysLog> page = sysLogMapper.selectPage(new Page(pages, size), queryWrapper);
 

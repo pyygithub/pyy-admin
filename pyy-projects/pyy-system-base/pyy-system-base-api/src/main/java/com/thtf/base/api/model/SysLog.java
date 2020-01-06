@@ -3,11 +3,13 @@ package com.thtf.base.api.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 系统操作日志
@@ -42,7 +44,7 @@ public class SysLog implements Serializable {
     /**
      * 操作人ID
      */
-    private String userName;
+    private String username;
 
     /**
      * 操作描述
@@ -75,7 +77,7 @@ public class SysLog implements Serializable {
     private String classPath;
 
     /**
-     * 请求方法
+     * 请求方式
      */
     private String requestMethod;
 
@@ -87,12 +89,12 @@ public class SysLog implements Serializable {
     /**
      * 开始时间
      */
-    private LocalDateTime startTime;
+    private Date startTime;
 
     /**
      * 完成时间
      */
-    private LocalDateTime finishTime;
+    private Date finishTime;
 
     /**
      * 消耗时间

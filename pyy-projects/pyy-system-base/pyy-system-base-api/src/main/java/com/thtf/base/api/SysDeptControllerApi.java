@@ -22,7 +22,7 @@ import java.util.List;
  * 版本：  v1.0
  * ---------------------------
  */
-@Api(value="部门管理接口", description = "部门管理接口，提供部门的增删改查操作")
+@Api(tags="部门管理")
 @RequestMapping(value = "/dept", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
 public interface SysDeptControllerApi {
     /**

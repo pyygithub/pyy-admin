@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 //3、RetentionPolicy.RUNTIME 注解在jvm加载的时候仍被保留
 @Target({ElementType.METHOD}) //定义了注解声明在哪些元素之前
 @Documented
-public @interface SysOperateLog {
+public @interface Log {
     //定义成员
-    String descrption() default "" ;//描述
+    String desc() default "" ;//描述
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * ---------------------------
@@ -26,15 +27,15 @@ public class SysLogQueryConditionVO implements Serializable {
     private Integer type;
 
     @ApiModelProperty("操作人名称")
-    private String userName;
+    private String username;
 
     @ApiModelProperty("操作类型（1查询/获取，2添加，3修改，4删除）")
     private Integer operateType;
 
     @ApiModelProperty("开始时间")
-    private LocalDateTime startTime;
+    private String startTime;
 
     @ApiModelProperty("完成时间")
-    private LocalDateTime finishTime;
+    private String finishTime;
 
 }

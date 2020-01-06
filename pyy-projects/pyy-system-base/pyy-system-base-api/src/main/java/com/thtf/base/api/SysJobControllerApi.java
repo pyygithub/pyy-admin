@@ -17,14 +17,14 @@ import java.util.List;
 
 /**
  * ---------------------------
- * 部门管理Controller接口
+ * 岗位管理Controller接口
  * ---------------------------
  * 作者：  pyy
  * 时间：  2019/12/31 16:47
  * 版本：  v1.02
  * ---------------------------
  */
-@Api(tags = "SysJobController", description = "岗位相关接口,提供增删改查功能")
+@Api(tags="岗位管理")
 @RequestMapping(value = "/sysJob", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
 public interface SysJobControllerApi {
     /**

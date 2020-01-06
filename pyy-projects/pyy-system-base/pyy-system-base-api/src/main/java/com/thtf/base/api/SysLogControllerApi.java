@@ -20,24 +20,24 @@ import org.springframework.web.bind.annotation.*;
  * 版本：  v1.0
  * ---------------------------
  */
-@Api(value="操作日志管理接口", description = "操作日志管理接口，提供操作的管理、查询")
-@RequestMapping("/v1")
+@Api(tags="操作日志管理")
+@RequestMapping("/sysLog")
 public interface SysLogControllerApi {
 
     @ApiOperation("分页查询日志列表")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="page",value = "页码", required=true, paramType="path", dataType="int"),
-            @ApiImplicitParam(name="size",value = "每页记录数", required=true, paramType="path", dataType="int")
+            @ApiImplicitParam(name="page",value = "页码", required=true, paramType="query", dataType="int"),
+            @ApiImplicitParam(name="size",value = "每页记录数", required=true, paramType="query", dataType="int")
     })
-    @GetMapping("/sysLog/{page}/{size}")
-    ResponseResult<Pager<SysLogVO>> findList(@PathVariable("page")int page, @PathVariable("size")int size, SysLogQueryConditionVO queryConditionVO);
+    @GetMapping("/page")
+    ResponseResult<Pager<SysLogVO>> findList(@RequestParam("page")int page, @RequestParam("size")int size, SysLogQueryConditionVO queryConditionVO);
 
     @ApiOperation("保存日志信息")
-    @PostMapping("/sysLog")
+    @PostMapping
     ResponseResult<SysLogVO> add(@RequestBody SysLogSaveOrUpdateVO sysLogSaveOrUpdateVO);
 
     @ApiOperation("根据id删除日志")
     @ApiImplicitParam(name = "logId", value = "日志ID", required = true, dataType = "String", paramType = "path")
-    @DeleteMapping("/sysLog/{logId}")
+    @DeleteMapping("/{logId}")
     ResponseResult delete(@PathVariable("logId") String logId);
 }
