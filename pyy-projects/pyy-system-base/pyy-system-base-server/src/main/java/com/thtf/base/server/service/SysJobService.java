@@ -58,4 +58,10 @@ public interface SysJobService {
      * @return
      */
     Pager<SysJobVO> findList(SysJobQueryConditionVO queryConditionVO, int page, int size);
+
+    /**
+     * 批量删除岗位信息
+     * @param ids
+     */
+    void deleteBatch(List<String> ids);
 }

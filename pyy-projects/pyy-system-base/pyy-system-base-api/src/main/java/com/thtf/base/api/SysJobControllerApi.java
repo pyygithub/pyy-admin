@@ -56,10 +56,20 @@ public interface SysJobControllerApi {
      * @param id
      * @return
      */
-    @ApiOperation(value = "删除岗位", notes = "根据ID岗位")
+    @ApiOperation(value = "删除岗位", notes = "根据ID删除岗位")
     @ApiImplicitParam(name = "id", value = "岗位ID", required = true, dataType = "String", paramType = "path")
     @DeleteMapping("/{id}")
     ResponseResult delete(@Valid @PathVariable(value = "id") String id);
+
+    /**
+     * 批量删除岗位
+     * @param ids
+     * @return
+     */
+    @ApiOperation(value = "批量删除岗位", notes = "批量删除岗位")
+    @ApiImplicitParam(name = "ids", value = "岗位IDS", required = true, dataType = "List", paramType = "body")
+    @DeleteMapping("/delBatch")
+    ResponseResult deleteBatch(@Valid @RequestBody List<String> ids);
 
     /**
      * 单个岗位查询

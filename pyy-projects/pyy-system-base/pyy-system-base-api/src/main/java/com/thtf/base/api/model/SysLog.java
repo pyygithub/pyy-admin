@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -30,6 +31,11 @@ public class SysLog implements Serializable {
      * 操作IP
      */
     private String requestIp;
+
+    /**
+     * IP归属地
+     */
+    private String ipLocation;
 
     /**
      * 数据类型 1 操作记录 2异常记录
@@ -70,6 +76,11 @@ public class SysLog implements Serializable {
      * 浏览器
      */
     private String browser;
+
+    /**
+     * 操作系统
+     */
+    private String operatingSystem;
 
     /**
      * 类路径

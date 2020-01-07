@@ -11,6 +11,7 @@ import com.thtf.common.log.annotation.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -44,6 +45,13 @@ public class SysJobController implements SysJobControllerApi {
     @Log(desc = "删除岗位")
     public ResponseResult delete(String id) {
         sysJobService.delete(id);
+        return ResponseResult.SUCCESS();
+    }
+
+    @Override
+    @Log(desc = "批量删除岗位")
+    public ResponseResult deleteBatch(@Valid List<String> ids) {
+        sysJobService.deleteBatch(ids);
         return ResponseResult.SUCCESS();
     }
 

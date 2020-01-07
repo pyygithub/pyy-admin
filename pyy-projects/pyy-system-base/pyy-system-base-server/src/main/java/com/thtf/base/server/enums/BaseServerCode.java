@@ -17,7 +17,8 @@ public enum BaseServerCode implements ResponseCode {
     DELETE_ERROR(20003,"删除失败！"),
     SELECT_ERROR(20004,"查询失败！"),
     RESULT_DATA_NONE(20005,"数据不存在！"),
-    PARENT_IS_SELF(20006,"父级不能为自己！");
+    PARENT_IS_SELF(20006,"父级不能为自己！"),
+    DEL_IDS_ISEMPTY(20007,"至少选择一条数据删除！");
 
     //操作代码
     private int code;

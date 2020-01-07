@@ -33,6 +33,8 @@ public class TableModel {
 	private String serviceImplPackageName;
 	/** Controller包名 */
 	private String controllerPackageName;
+	/** ControllerApi包名 */
+	private String controllerApiPackageName;
 	/** View目录名 */
 	private String viewPackageName;
 	/** 类名 */

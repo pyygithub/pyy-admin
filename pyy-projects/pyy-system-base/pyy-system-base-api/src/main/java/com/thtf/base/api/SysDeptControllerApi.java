@@ -23,7 +23,7 @@ import java.util.List;
  * ---------------------------
  */
 @Api(tags="部门管理")
-@RequestMapping(value = "/dept", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
+@RequestMapping(value = "/sysDept", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
 public interface SysDeptControllerApi {
     /**
      * 保存部门

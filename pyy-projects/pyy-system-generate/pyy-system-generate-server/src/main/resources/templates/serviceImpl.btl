@@ -72,7 +72,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 根据ID查询${table.description}
         ${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
         if (${table.objectName} == null) {
-            ExceptionCast.cast(ResultCode.RESULT_DATA_NONE);
+            ExceptionCast.cast(BaseServerCode.RESULT_DATA_NONE);
         }
         // 执行删除
         int row = ${table.objectName}Mapper.deleteById(id);
@@ -96,7 +96,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         // 根据ID查询${table.description}
         ${table.className} ${table.objectName} = ${table.objectName}Mapper.selectById(id);
         if (${table.objectName} == null) {
-            throw new CustomException(ResultCode.RESULT_DATA_NONE);
+            ExceptionCast.cast(BaseServerCode.RESULT_DATA_NONE);
         }
 
         // 属性赋值

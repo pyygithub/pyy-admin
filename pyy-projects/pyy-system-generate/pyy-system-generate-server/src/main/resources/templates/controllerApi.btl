@@ -22,9 +22,9 @@ import java.util.List;
  * 版本：  v1.0
  * ---------------------------
  */
-@Api(tags = "${table.className}Controller", description = "${table.description}相关接口,提供增删改查功能")
+@Api(tags = "${table.description}管理模块")
 @RequestMapping(value = "/${table.objectName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
-public interface ${table.className}Controller {
+public interface ${table.className}ControllerApi {
 
     /**
      * 保存${table.description}

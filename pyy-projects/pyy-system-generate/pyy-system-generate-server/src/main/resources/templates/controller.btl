@@ -1,14 +1,13 @@
 package ${table.controllerPackageName};
 
-import ${table.modelPackageName}.${table.className};
+import ${table.voPackageName}.*;
+import ${table.modelPackageName}.*;
 import ${table.servicePackageName}.${table.className}Service;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import com.thtf.common.core.response.Pager;
+import com.thtf.common.core.response.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -20,10 +19,8 @@ import java.util.List;
  * 版本：  v1.0
  * ---------------------------
  */
-@Api(tags = "${table.className}Controller", description = "${table.description}相关接口,提供增删改查功能")
 @RestController
-@RequestMapping(value = "/${table.objectName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
-public class ${table.className}Controller implements ${table.className}ControllerApi{
+public class ${table.className}Controller implements ${table.className}Controller{
 
 	@Autowired
 	private ${table.className}Service ${table.objectName}Service;

@@ -9,8 +9,7 @@ import com.thtf.common.core.constant.PyyConstant;
 import com.thtf.common.core.response.ResponseResult;
 import com.thtf.common.log.event.SysLogEvent;
 import com.thtf.common.log.util.LogUtil;
-import eu.bitwalker.useragentutils.Browser;
-import eu.bitwalker.useragentutils.OperatingSystem;
+import com.thtf.common.log.util.ip.utils.IPUtil;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +21,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * ---------------------------
@@ -82,11 +81,17 @@ public class SysLogAspect {
         sysLog.setUsername(UserSecurityUtil.getUsername());
         sysLog.setActionUrl(URLUtil.getPath(request.getRequestURI()));
         sysLog.setStartTime(new Date());
-        sysLog.setRequestIp(ServletUtil.getClientIP(request));
+        String requestIp = ServletUtil.getClientIP(request);
+        // 请求IP
+        sysLog.setRequestIp(requestIp);
+        // IP归属地
+        sysLog.setIpLocation(IPUtil.getCityInfo(requestIp));
         sysLog.setRequestMethod(request.getMethod());
         UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-        Browser browser = userAgent.getBrowser();
-        sysLog.setBrowser(browser.getName());
+        // 浏览器
+        sysLog.setBrowser(userAgent.getBrowser().getName());
+        // 操作系统
+        sysLog.setOperatingSystem(userAgent.getOperatingSystem().getName());
         //访问目标方法的参数 可动态改变参数值
         Object[] args = joinPoint.getArgs();
         // 类名
@@ -102,6 +107,7 @@ public class SysLogAspect {
         sysLog.setDescription(LogUtil.getControllerMethodDescription(joinPoint));
         long endTime = Instant.now().toEpochMilli();
         sysLog.setConsumingTime(endTime - beginTime);
+
     }
 
     /**

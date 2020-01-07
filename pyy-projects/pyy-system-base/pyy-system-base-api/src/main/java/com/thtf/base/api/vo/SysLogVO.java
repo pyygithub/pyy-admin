@@ -29,6 +29,9 @@ public class SysLogVO implements Serializable {
     @ApiModelProperty("操作IP")
     private String requestIp;
 
+    @ApiModelProperty("IP归属地")
+    private String ipLocation;
+
     @ApiModelProperty("数据类型 1 操作记录 2异常记录")
     private Integer type;
 
@@ -52,6 +55,9 @@ public class SysLogVO implements Serializable {
 
     @ApiModelProperty("浏览器")
     private String browser;
+
+    @ApiModelProperty("操作系统")
+    private String operatingSystem;
 
     @ApiModelProperty("类路径")
     private String classPath;
